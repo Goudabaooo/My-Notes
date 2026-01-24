@@ -1,7 +1,12 @@
 @echo off
+:: ?? 这一行是关键！强制跳转到脚本所在的目录
+cd /d "%~dp0"
+
 echo ==========================================
 echo       Auto Syncing to Cloud...
 echo ==========================================
+echo Working Directory: %cd%
+echo.
 
 :: 1. Add files
 echo [1/3] Adding files (git add)...
