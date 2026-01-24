@@ -133,9 +133,17 @@ pip install --upgrade matplotlib==3.7
 
 
 
+start VitePress
+
+```powershell
+npm run docs:dev
+```
+
+
+
 update vercel
 
-```
+```powershell
 git add .
 git commit -m "更新schedule"
 git push
