@@ -131,3 +131,13 @@ update packages
 pip install --upgrade matplotlib==3.7
 ```
 
+
+
+update vercel
+
+```
+git add .
+git commit -m "更新schedule"
+git push
+```
+
