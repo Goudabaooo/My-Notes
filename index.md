@@ -1,5 +1,4 @@
 ---
-​---
 layout: home
 
 hero:
@@ -26,6 +25,5 @@ features:
   - title: 📝 随笔与测试
     details: 记录一些 Coding Tips 以及生活中的灵感碎片。
     link: /tips
-​---
 ---
 
