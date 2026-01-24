@@ -34,8 +34,7 @@ export default defineConfig({
         collapsed: false, // 默认展开
         items: [
           { text: '日程安排', link: '/Schedule_Howard' },
-          { text: '组会记录 (2025-10-29)', link: '/组会20251029' },
-          { text: '暑假学习情况', link: '/暑假学习情况' }
+          { text: 'Tips', link: '/tips' },
         ]
       },
       {
@@ -44,7 +43,7 @@ export default defineConfig({
         items: [
           { text: '统计学习理论', link: '/StatisticalLearningTheory' },
           { text: '神经网络优化算法', link: '/神经网络优化算法模型' },
-          { text: '机器学习课程论文', link: '/机器学习与数据挖掘课程论文' },
+          { text: '机器学习课程', link: '/机器学习与数据挖掘课程论文' },
           { text: '毕业课题选择', link: '/毕业课题 选择' },
           { text: '正大杯项目', link: '/正大杯' }
         ]
