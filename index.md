@@ -3,8 +3,8 @@ layout: home
 
 hero:
   name: "Howard 的科研空间"
-  text: "应用统计 | 机器学习 | 随笔"
-  tagline: "记录研究生生涯的点滴"
+  text: "机器学习 | 随笔"
+  tagline: "记录研究生的点滴"
   actions:
     - theme: brand
       text: "查看近期日程"
