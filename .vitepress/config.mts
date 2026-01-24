@@ -33,7 +33,7 @@ export default defineConfig({
         text: '📅 近期聚焦',
         collapsed: false, // 默认展开
         items: [
-          { text: '日程安排', link: '/Schedule_Howard' },
+          { text: 'Schedule', link: '/Schedule_Howard' },
           { text: 'Tips', link: '/tips' },
         ]
       },
