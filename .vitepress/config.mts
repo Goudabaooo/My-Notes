@@ -3,7 +3,7 @@ import mathjax3 from 'markdown-it-mathjax3'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "My Awesome Project",
+  title: "Howard's Notes",
   description: "A VitePress Site",
 
   // 👇 2. 新增这块 markdown 配置代码
@@ -22,6 +22,8 @@ export default defineConfig({
   
   
   themeConfig: {
+    siteTitle: false,
+
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '主页', link: '/' },

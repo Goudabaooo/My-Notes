@@ -99,11 +99,6 @@ curl.exe https://api.openai.com/v1/models
 
 如果返回认证错误但不是连接超时，说明网络已经通了；没有 API Key 时出现 401/403 属于正常现象。
 
-<<<<<<< HEAD
-
-=======
->>>>>>> a12df19ea63ad482081dfe7aed466aa0ac0b7402
-
 ### 2. Git for Windows
 
 用途：让 Codex 能读仓库状态、看 diff、创建分支、提交、使用 worktree。
