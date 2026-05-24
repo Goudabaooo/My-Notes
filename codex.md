@@ -99,17 +99,7 @@ curl.exe https://api.openai.com/v1/models
 
 如果返回认证错误但不是连接超时，说明网络已经通了；没有 API Key 时出现 401/403 属于正常现象。
 
-iku
 
-https://yuipt.no-mad-sub.one/link/c0AKw9VH4jtVz6ep?clash=3&extend=1
-
-sh
-
-https://sub01.sh-cloudflare.sbs:8443/api/v1/client/subscribe?token=2ad90e2efd8766c58d30f4f91b33bbc4 
-
-yy
-
-https://sub1.smallstrawberry.com/api/v1/client/subscribe?token=1119b97b0ccb11187ba86af52fe70c93
 
 ### 2. Git for Windows
 

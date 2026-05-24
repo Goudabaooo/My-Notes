@@ -14,10 +14,6 @@
 
 - 9.2-9.4
 
-#### 9.20
-
-摆烂
-
 #### 9.21
 
 - ML-Exercise4-Ongoing
@@ -27,10 +23,6 @@
 
 - ML-Exercise4
 - ML-Exercise5-Ongoing
-
-#### 9.23
-
-摆烂
 
 #### 9.24
 
