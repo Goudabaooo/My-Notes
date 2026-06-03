@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国工业互联网研究院</title>
+    <link rel="icon" href="./icon.png">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+        }
+        .header{
+            margin-top: 20px;
+            margin-left: 80px;
+            width: 88%;
+            height: 80px;
+        }
+        .header .left{
+            float: left;
+            margin-top: 10px;
+        }
+        .header .middle{
+            float: left;
+            border-top: 2px solid #063f83 ;
+            border-left: 2px solid #063f83 ;
+            border-bottom: 2px solid #063f83 ;
+            margin-top: 23px;
+            width: 385px;
+            height: 42px;
+            margin-left: 60px;
+        }
+        .header .right{
+            float: left;
+            border: 1px solid gray;
+            margin-top: 23px;
+            width: 100px;
+            height: 43px;
+            background-color: #063f83;
+            color: #fff;
+            line-height: 42px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .header .middle .input{
+            line-height: 40px;
+            border: 30px;
+            outline: none;
+            font-size: 18px;
+        }
+        input::placeholder{
+            color: #ccc;
+            font-weight: 500;
+        }
+        .Center{
+            list-style-type: none;
+            width: 125px;
+            float: left;
+            margin-top: 35px;
+            margin-left: 130px;
+            font-size: 14px;
+            height: 40px;
+            color: #181818;
+            line-height: 40px;
+        }
+        .Peking{
+            margin-top: -10px;
+            float: left;
+            cursor: pointer;
+        }
+        .Peking>div{
+            float: left;
+        }
+        .arrow{
+            margin-top: 12px;
+            margin-left: 4px;
+        }
+        .items{
+            list-style-type: none;
+            position: absolute;
+            text-align: center;
+            display: none;
+            width: 150px;
+            margin-left: -20px;
+            box-shadow: 0 0 5px 0.5px #ccc;
+            background-color: #fff;
+            z-index: 999;
+        }
+        .items>li{
+            margin-left: -40px;
+        }
+        .Peking:hover .items{
+            display: block;
+        }
+        .items li:hover{
+            color: #063f83;
+        }
+        .RRight>div{
+            line-height: 40px;
+            width: 80px;
+            height: 40px;
+            display: block;
+            float:left;
+            margin-top: 25px;
+            left: -10px;
+            cursor: pointer;
+        }
+        .RRight>div:hover{
+            color:#063f83;
+        }
+        .signin{
+            position: absolute;
+            background-color: #063f83;
+            color: #fff;
+            width: 100px;
+            height: 42px;
+            margin-top: 25px;
+            text-align: center;
+            line-height: 42px;
+        }
+
+        .neck{
+            width: 60%;
+            margin-left: 180px;
+            margin-top: 30px;
+            height: 60px;
+            position: relative;
+            font-size: 14px;
+        }
+        .neck>div{
+            border: 100px;
+            height: 42px;
+            float: left;
+            margin-left: 100px;
+        }
+        .itemss-1{
+            font-size: 14px;
+            color: rgb(0,0,0,0.65);
+            list-style: none;
+            position: absolute;
+            text-align: center;
+            display: none;
+            width: 150px;
+            height: 160px;
+            line-height: 40px;
+            margin-left: -45px;
+            margin-top: 3px;
+            box-shadow: 0 0 5px 0.5px #ccc;
+            background-color: #fff;
+            cursor: pointer;
+            z-index: 999;
+        }
+        .bigdata{
+            width: 60px;
+            height: 40px;
+            margin-left: 0px;
+            line-height: 40px;
+            text-align: center;
+        }
+        .bigdata:hover{
+            color: #063f83;
+            cursor: pointer;
+            border-bottom: #063f83 2px solid;
+        }
+        .vision:hover{
+            color: #063f83;
+            cursor: pointer;
+            border-bottom: #063f83 2px solid;
+        }
+        .bigdata:hover+.itemss-1{
+            display: block;
+        }
+        .itemss-1:hover{
+            display: block;
+        }
+        .vision{
+            width: 80px;
+            height: 40px;
+            margin-left: 0px;
+            line-height: 40px;
+            text-align: center;
+        }
+        .itemss-2{
+            font-size: 14px;
+            color: rgb(0,0,0,0.65);
+            list-style: none;
+            position: absolute;
+            text-align: center;
+            display: none;
+            width: 150px;
+            height: 40px;
+            line-height: 40px;
+            margin-left: -35px;
+            margin-top: 3px;
+            box-shadow: 0 0 5px 0.5px #ccc;
+            background-color: #fff;
+            cursor: pointer;
+            z-index: 999;
+        }
+        .vision:hover+.itemss-2{
+            display: block;
+        }
+        .itemss-2:hover{
+            display: block;
+        }
+        .cloud{
+            width: 80px;
+            height: 40px;
+            margin-left: 0px;
+            line-height: 40px;
+            text-align: center;
+        }
+        .itemss-3{
+            font-size: 14px;
+            color: rgb(0,0,0,0.65);
+            list-style: none;
+            position: absolute;
+            text-align: center;
+            display: none;
+            width: 200px;
+            height: 600px;
+            line-height: 40px;
+            margin-left: -35px;
+            margin-top: 3px;
+            box-shadow: 0 0 5px 0.5px #ccc;
+            background-color: #fff;
+            cursor: pointer;
+            z-index: 999;
+        }
+        .cloud:hover{
+            color: #063f83;
+            cursor: pointer;
+            border-bottom: #063f83 2px solid;
+        }
+        .cloud:hover+.itemss-3{
+            display: block;
+        }
+        .itemss-3:hover{
+            display: block;
+        }
+        .public{
+            width: 100px;
+            height: 40px;
+            margin-left: 0px;
+            line-height: 40px;
+            text-align: center;
+        }
+        .itemss-4{
+            font-size: 14px;
+            color: rgb(0,0,0,0.65);
+            list-style: none;
+            position: absolute;
+            text-align: center;
+            display: none;
+            width: 200px;
+            height: 360px;
+            line-height: 40px;
+            margin-left: -25px;
+            margin-top: 3px;
+            box-shadow: 0 0 5px 0.5px #ccc;
+            background-color: #fff;
+            cursor: pointer;
+            z-index: 999;
+        }
+        .public:hover{
+            color: #063f83;
+            cursor: pointer;
+            border-bottom: #063f83 2px solid;
+        }
+        .public:hover+.itemss-4{
+            display: block;
+        }
+        .itemss-4:hover{
+            display: block;
+        }
+        .net{
+            width: 80px;
+            height: 40px;
+            margin-left: 0px;
+            line-height: 40px;
+            text-align: center;
+        }
+        .itemss-5{
+            font-size: 14px;
+            color: rgb(0,0,0,0.65);
+            list-style: none;
+            position: absolute;
+            text-align: center;
+            display: none;
+            width: 150px;
+            height: 80px;
+            line-height: 40px;
+            margin-left: -35px;
+            margin-top: 3px;
+            box-shadow: 0 0 5px 0.5px #ccc;
+            background-color: #fff;
+            cursor: pointer;
+            z-index: 999;
+        }
+        .net:hover{
+            color: #063f83;
+            cursor: pointer;
+            border-bottom: #063f83 2px solid;
+        }
+        .net:hover+.itemss-5{
+            display: block;
+        }
+        .itemss-5:hover{
+            display: block;
+        }
+
+
+        .collarbone{
+            width: 88%;
+            height: 600px;
+            margin: auto;
+            position: relative;
+        }
+        .collarbone>.left{
+            width: 240px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 14px;
+            background-color: #063f83;
+            color: #fff;
+    
+        }
+        .collarbone>.left>.top{
+            width: 240px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 14px;
+            background-color: #063f83;
+            color: #fff;
+            text-align: center;
+            z-index: 998;
+        }
+        .collarbone>.left>.bottom{
+            width: 240px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 14px;
+            background-color: #063f83;
+            color: #fff;
+            text-align: center;
+            bottom: 0;
+            position: absolute;
+        }
+        .content{
+            height: 520px;
+            color: #888;
+            text-indent: 5px;
+        }
+
+        .content>.box>.title{
+            color: #666;
+            font-weight: 600;
+            height: 33.5px;
+            border-top: #eee 1px solid;
+        }
+        .content>.box1>.title{
+            color: #666;
+            font-weight: 600;
+            position: inherit;
+            height: 33.5px;
+            border-top: #eee 1px solid;
+        }
+        .content>.box2>.title{
+            color: #666;
+            font-weight: 600;
+        
+            height: 33.5px;
+            border-top: #eee 1px solid;
+        }
+
+        .littlefont{
+            font-size: 10px;
+            padding-left: 5px;
+        }
+        .box{
+            transition: 0.5s;
+        }
+        .box1{
+            transition: 0.5s;
+        }
+        .box2{
+            transition: 0.5s;
+        }
+        .box1:hover{
+            box-shadow: 0 5px 6px 1px #eee;
+        }
+        .box:hover{
+            box-shadow: 0 0 6px 1px #eee;
+        }
+        .box2:hover{
+            box-shadow: 0 -5px 6px 1px #eee;
+        }
+        .content>.box>.title:hover{
+            cursor: pointer;
+            color: #063f83;
+        }
+        .littlefont:hover{
+            cursor: pointer;
+            color: #063f83;            
+        }
+        .content>.box1>.title:hover{
+            cursor: pointer;
+            color: #063f83;
+        }
+
+        .content>.box2>.title:hover{
+            cursor: pointer;
+            color: #063f83;
+        }
+
+
+        .picture{
+            width: 75%;
+            height: 320px;
+            margin-top: 0;
+            overflow: hidden;
+            float: right;
+            margin-top: -40px;
+        }
+        .img{
+            width: 4096px;
+            height: 320px;
+            margin-top: 0;
+            animation: turnaround 10s infinite  linear;
+            font-size: 0;
+            float: left;
+        }
+        .picturebox{
+            width: 1024px;
+            float: left;
+        }
+        .pictureword{
+            z-index: 33;
+            font-size: 28px;
+            font-weight: 600;
+            font-family: PingFang-Regular;
+            color: #fff;
+            margin-left: 37px;
+            position: absolute;
+            margin-top: 20px;
+            line-height: 100px;
+        }
+        .use{
+            z-index: 33;
+            font-size: 12px;
+            font-weight: 600;
+            color: #fff;
+            position: absolute;
+            line-height: 0px;
+            margin-top: 200px;
+            margin-left: 37px;
+            height: 20px;
+            cursor: pointer;
+        }
+        @keyframes turnaround{
+            0%,12.5%{
+                transform: translateX(0);
+            }
+            12.5%,25%{
+                transform: translateX(0);
+            }
+            25%,37.5%{
+                transform: translateX(-1024px);
+            }
+            37.5%,50%{
+                transform: translateX(-1024px);
+            }
+            50%,62.5%{
+                transform: translateX(-2048px);
+            }
+            62.5%,75%{
+                transform: translateX(-2048px);
+            }
+            75%,87.5%{
+                transform: translateX(-3072px);
+            }
+            87.5%,100%{
+                transform: translateX(-3072px);
+            }
+        }
+        .bottomofpicture{
+            width: 75%;
+            height: 260px;
+            float: right;
+            margin-top: 20px;
+
+        }
+        .boxs{
+            width: 24.8%;
+            height: 260px;
+            float: left;    
+
+        }
+        .boxs.b1{
+            border-right: rgb(238, 238, 238) 0.8px solid;
+        }
+        .boxs.b3{
+            border-right: rgb(238, 238, 238) 0.8px solid;
+            border-left: rgb(238, 238, 238) 0.8px solid;
+        }
+        .boxs>:nth-child(1){
+            text-align: center;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .boxs>:nth-child(1):hover{
+            color: #063f83;
+        }
+        .boxs>:nth-child(2){
+            text-align: center;
+            cursor: pointer;
+            font-size: 14px;
+            color: #999;
+            height: 51px;
+            line-height: 25px;
+            width: 85%;
+            margin: auto;
+            margin-top: 20px;
+        }
+        .boxs>img{
+            width: 70px;
+            height: 70px;
+            margin-left: 37%;
+            margin-top: 25px;
+        }
+
+
+        .HotService{
+            line-height: 1.5;
+            font-size: 24px;
+            color: rgb(51,51,51);
+            font-weight: 400;
+            width: 88%;
+            margin: auto;
+            margin-top: 50px;
+        }
+        .Square{
+            height: 600px;
+            width: 88%;
+
+            margin: auto;
+            margin-top: 20px;
+        }
+        .bbox{
+            width: 25%;
+            height: 100%;
+            float: left;
+        }
+        .bbox-b11{
+            width: 25%;
+            float: left;
+            height: 100%;
+            background-image: url(top.jpg);
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            margin:auto;
+            line-height: 120px;
+            text-indent: 80px;
+        }
+        .bbox-b21{
+            width: 25%;
+            float: left;
+            height: 100%;
+            background-image: url(bottom.jpg);
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            margin:auto;
+            line-height: 120px;
+            text-indent: 80px;
+        }
+        .bbbox{
+            height: 50%;
+            transition: all 0.5s;
+            text-indent: 25px;
+            border: #eee 0.1px solid;
+        }
+        .bbbox:hover{
+            box-shadow: 0px 0px 10px 1px #ccc;
+        }
+        .bbbox:hover .bbbox-button{
+            display: block;
+        }
+        .bbbox-title1{
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 30px;
+            margin: auto;
+            position: relative;
+            top: 20px;
+
+        }
+        .bbbox-title2{
+            font-size: 12px;
+            font-family: MicrosoftYaHei, "微软雅黑 Bold", "微软雅黑 Regular", 微软雅黑, sans-serif;
+            color: rgb(153,153,153);
+            font-weight: 600;
+            width: 80%;
+            height: 30px;
+            text-indent: 0;
+            margin: 0;
+            margin-left: 25px;
+            position: relative;
+            top: 25px;
+        }
+        .bbbox-content{
+            font-size: 12px;
+            font-weight: 700;
+            font-family: MicrosoftYaHei, "微软雅黑 Bold", "微软雅黑 Regular", 微软雅黑, sans-serif;
+            color: #666;
+            position: relative;
+            top: 80px;
+            left: 25px;
+            line-height: 20px;
+        }
+        .bbbox-click{
+            color: #063f83;
+            position: relative;
+            bottom: -100px;
+            font-size: 14px;
+        }
+        .bbbox-button{
+            background-color: #063f83;
+            height: 50px;
+            position: relative;
+            bottom: -68px;
+            text-align: center;
+            line-height: 50px;
+            color: #fff;
+            transition: all 0.5s;
+            text-indent: 10px;
+            display: none;
+        }
+        .bbbox-button:hover{
+            cursor: pointer;
+        }
+
+
+        .foot{
+            width: 80%;
+            background-color: #000;
+            height: 210px;
+            padding: 30px 150px;
+            margin-top: 30px;
+        }
+        .foot-title1{
+            font-size: 14px;
+            color: #fff;
+            float: left;
+            height: 30px;
+
+            margin-right: 42px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        .foot-title1:hover{
+            color: #996a00;
+        }
+        .foot-title2{
+            font-size: 14px;
+            color: #999;
+            height: 120px;
+            line-height: 40px;
+            margin-top: 50px;
+            margin-right: 45px;
+            margin-left: -364px;
+            cursor: pointer;
+            float: left;
+        }
+        .foot-title3{
+            font-size: 14px;
+            color: #999;
+            float: left;
+            height: 40px;
+            width: 99.5%;
+            border-top: #999 1px solid;
+            margin-bottom: 0;
+            margin-top: 180px;
+            margin-left: -1090px;
+            line-height: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="left">
+            <img src="logo.png" alt="">
+        </div>
+        <div class="middle">
+            <input type="text" placeholder="云服务器ECS" style="text-indent: 10px;" class="input">
+        </div>
+        <div class="right">
+            <span>搜索</span>
+        </div>
+        <ul class="Center">
+            <li class="Peking">
+                <div>北京主中心</div>
+                <img src="arrow.png" style="width: 20px;" height="20px" width="20px" class="arrow">
+                <ul class="items">
+                    <li>北京主中心</li>
+                    <li>北京备中心</li>
+                    <li>广东分中心</li>
+                    <li>重庆分中心</li>
+                    <li>辽宁分中心</li>
+                    <li>山东分中心</li>
+                </ul>
+            </li>
+        </ul>
+        <div class="RRight">
+            <div>购物车</div>
+            <div>消息</div>
+            <div>控制台</div>
+            <div>登录</div>
+        </div>
+        <span class="signin">免费注册</span>
+    </div>
+    <div class="neck">
+        <div>
+            <div class="bigdata">大数据</div>
+            <ul class="itemss-1">
+                <li>数据管理</li>
+                <li>数据中台</li>
+                <li>数据交易</li>
+                <li>AI中台</li>
+            </ul>
+        </div>
+        <div>
+            <div class="vision">可视化平台</div>
+            <ul class="itemss-2">
+                <li>可视化平台</li>
+            </ul>
+        </div>
+        <div>
+            <div class="cloud">云管平台</div>
+            <ul class="itemss-3">
+                <li>计算-云服务器ECS</li>
+                <li>计算-容器引擎ICE</li>
+                <li>计算-容器镜像服务CRS</li>
+                <li>存储-云硬盘EBS</li>
+                <li>存储-对象存储OSS</li>
+                <li>网络-虚拟私有网络VPC</li>
+                <li>网络-负载均衡SLB</li>
+                <li>网络-弹性公网IP EIP</li>
+                <li>云数据库-RDS-MySQL</li>
+                <li>云数据库-Redis</li>
+                <li>云数据库-时序数据库TSDB</li>
+                <li>开发者-软件开发服务DevService</li>
+                <li>云数据库-云溪数据库ZNBase</li>
+                <li>物联网-IOT_HUB</li>
+                <li>存储-云备份CBS</li>
+            </ul>
+        </div>
+        <div>
+            <div class="public">公共服务平台</div>
+            <ul class="itemss-4">
+                <li>工业软件商店</li>
+                <li>供需对接市场</li>
+                <li>解决方案市场</li>
+                <li>企业数据管理成熟度评估系统</li>
+                <li>竞赛管理系统</li>
+                <li>工业互联网供应链金融</li>
+                <li>工业APP市场</li>
+                <li>工业软件市场</li>
+                <li>数字工品市场</li>
+            </ul>
+        </div>
+        <div>
+            <div class="net">物联网</div>
+            <ul class="itemss-5">
+                <li>边云协同</li>
+                <li>企业接入流量监测</li>
+            </ul>
+        </div>
+    </div>
+    <div class="collarbone">
+        <div class="left">
+            <div class="top">精选分类</div>
+            <div class="content">
+                <div class="box1">
+                    <div class="title">大数据</div>
+                    <span class="littlefont">数据管理测试</span>
+                    | 
+                    <span class="littlefont">数据中台</span>
+                    | 
+                    <span class="littlefont">数据交易</span>
+                </div>
+                <div class="box">
+                    <div class="title">物联网</div>
+                    <span class="littlefont">可视化平台</span>
+                    | 
+                    <span class="littlefont">边云协同</span>
+                </div>               
+                <div class="box">
+                    <div class="title">云计算</div>
+                    <span class="littlefont">云服务器</span>
+                    | 
+                    <span class="littlefont">容器引擎</span>
+                    | 
+                    <span class="littlefont">容器镜像服务</span>
+                </div>                
+                <div class="box">
+                    <div class="title">存储</div>
+                    <span class="littlefont">云硬盘</span>
+                    | 
+                    <span class="littlefont">对象存储</span>
+                </div>                
+                <div class="box">
+                    <div class="title">网络</div>
+                    <span class="littlefont">虚拟私有网络</span>
+                    | 
+                    <span class="littlefont">弹性公网IP</span>
+                    | 
+                    <span class="littlefont">负载均衡</span>
+                </div>
+                <div class="box">
+                    <div class="title">数据库</div>
+                    <span class="littlefont">云数据RDS</span>
+                    | 
+                    <span class="littlefont">时序数据库</span>
+                    | 
+                    <span class="littlefont">数据交易</span>
+                </div>
+                <div class="box2">
+                    <div class="title">开发者</div>
+                    <span class="littlefont">软件开发服务Devops</span>
+                </div>
+            </div>
+            <div class="bottom">查看全部</div>
+        </div>
+        <div class="right">
+            <div class="picture">
+                <div class="img">
+                    <div class="picturebox">
+                        <div class="pictureword">数据中台</div>
+                        <div class="use">立即使用 →</div>
+                        <img src="picture1.jpg" alt="">
+
+                    </div>
+                    <div class="picturebox">
+                        <div class="pictureword">供需对接市场</div>
+                        <div class="use">立即使用 →</div>
+                        <img src="picture2.jpg" alt="">
+
+                    </div>
+                    <div class="picturebox">
+                        <div class="pictureword">可视化平台</div>
+                        <div class="use">立即使用 →</div>
+                        <img src="picture3.jpg" alt="">
+
+                    </div>
+                    <div class="picturebox">
+                        <div class="pictureword">数据中台</div>
+                        <div class="use">立即使用 →</div>
+                        <img src="picture1.jpg" alt="">
+
+                    </div>
+                </div>
+            </div>
+            <div class="bottomofpicture">
+                <div class="boxs b1">
+                    <div>AI中台</div>
+                    <div>为企业提供一站式解决方案</div>
+                    <img src="excel1.jfif" alt="">
+                
+                </div>
+                <div class="boxs b2">
+                    <div>数据可视化公共服务平台</div>
+                    <div>融合数据源适配，数据处理等功能的可视化展示系统</div>
+                    <img src="excel2.jfif" alt="">
+                </div>
+                <div class="boxs b3">
+                    <div>云服务器</div>
+                    <div>一种简单高效、安全可靠、弹性可伸缩的计算服务</div>
+                    <img src="excel3.jfif" alt="">
+                </div>
+                <div class="boxs b4">
+                    <div>边云协同</div>
+                    <div>通过边云应用，帮助企业进行可视化高效管理</div>
+                    <img src="excel4.jfif" alt="">
+                </div>                
+            </div>
+        </div>
+    </div>
+    <div class="stomach">
+        <div class="HotService">热门服务</div>
+    </div>
+    <div class="Bowels">
+        <div class="Square">
+            <div class="bbox-b11">可视化展示</div>
+            <div class="bbox">
+                <div class="bbbox">
+                    <div class="bbbox-title1">数据管理</div>
+                    <div class="bbbox-title2">为业务提供持续的、可度量的价值；以数据的分权域管理为核心，具有完善的分布式用户权限体系</div>
+                    <div class="bbbox-content"><br>
+                        √ 元数据管理<br>
+                        √ 数据标识管理<br>
+                        √ 数据标识管理<br>
+                        √ 数据血缘<br>
+                    </div>
+                    <div class="bbbox-click">立即查看</div>
+                    <div class="bbbox-button">点击查看</div>
+                </div>
+                <div class="bbbox">
+                    <div class="bbbox-title1">数据交易</div>
+                    <div class="bbbox-title2">帮助市场建立统一完善的平台，整合数据资源，建立完整的数据生态圈，形成良好的利益循环</div>
+                    <div class="bbbox-content"><br>
+                        √ 价值挖掘<br>
+                        √ 数据流通<br>
+                        √ 在线服务<br>
+                        √ 数据交易<br>
+                    </div>
+                    <div class="bbbox-click">立即查看</div>
+                    <div class="bbbox-button">点击查看</div>
+                </div>
+            </div>
+            <div class="bbox">
+                <div class="bbbox">
+                    <div class="bbbox-title1">数据中台</div>
+                    <div class="bbbox-title2">基于大数据基础能力，为用户提供拖拽式、可视化、集成化Web IDE界面及程序部署发布、权限配置、任务执行流程编排、任务执行调度等基础能力</div>
+                    <div class="bbbox-content"><br>
+                        √ 数据总线<br>
+                        √ 即席查询<br>
+                        √ 作业仓库<br>
+                        √ 任务调度<br>
+                    </div>
+                    <div class="bbbox-click">立即查看</div>
+                    <div class="bbbox-button">点击查看</div>
+                </div>
+                <div class="bbbox">
+                    <div class="bbbox-title1">可视化展示</div>
+                    <div class="bbbox-title2">实现自动从异构系统中收集各种数据信息，整合平台应用的业务数据，建立数据集，通过与其它系统对接，打通，形成循环，通过数据化分析展现</div>
+                    <div class="bbbox-content"><br>
+                        √ 数据源采集<br>
+                        √ 数据处理整合<br>
+                        √ 可视化分析<br>
+                        √ 数据大屏展示<br>
+                    </div>
+                    <div class="bbbox-click">立即查看</div>
+                    <div class="bbbox-button">点击查看</div>
+                </div>
+            </div>
+            <div class="bbox">
+                <div class="bbbox">
+                    <div class="bbbox-title1">AI中台</div>
+                    <div class="bbbox-title2">提供了AI平台研发能力，AI服务部署能力等，包含实验平台、Notebook、快速学习、数据标注、模型管理、服务管理、用户与权限管理、运营管理、运维系统等子功能。</div>
+                    <div class="bbbox-content"><br>
+                        √ 实验平台<br>
+                        √ 快速学习<br>
+                        √ 数据标注<br>
+                        √ 模型管理<br>
+                    </div>
+                    <div class="bbbox-click">立即查看</div>
+                    <div class="bbbox-button">点击查看</div>
+                </div>
+                <div class="bbbox">
+                    <div class="bbbox-title1">运维管理</div>
+                    <div class="bbbox-title2">从资源监控和资源配置管理两大维度提供：资源监控展示、资源健康报警、资源使用看板、服务管理，主机管理，组件部署。</div>
+                    <div class="bbbox-content"><br>
+                        √ 资源监控展示<br>
+                        √ 资源监控报警<br>
+                        √ 资源使用看板<br>
+                        √ 服务管理<br>
+                    </div>
+                    <div class="bbbox-click">立即查看</div>
+                    <div class="bbbox-button">点击查看</div>
+                </div>
+            </div>
+        </div>
+        <div class="Square">
+            <div class="bbox-b21">安全监测分析</div>
+            <div class="bbox">
+                <div class="bbbox">
+                    <div class="bbbox-title1">政府监管支撑平台</div>
+                    <div class="bbbox-title2">通过建立“用数据说话、用数据决策、用数据管理、用数据创新”的机制，实现基于数据的科学决策。</div>
+                    <div class="bbbox-content"><br>
+                        √ 工业经济和产业运行检测子系统<br>
+                        √ 工业互联网运行情况监测子系统<br>
+                        √ 工业互联网产品方案检测测试子系统<br>
+                        √ 系统管理子系统<br>
+                    </div>
+                    <div class="bbbox-click">立即查看</div>
+                    <div class="bbbox-button">点击查看</div>
+                </div>
+                <div class="bbbox">
+                    <div class="bbbox-title1">企业创新应用</div>
+                    <div class="bbbox-title2">通过开放的企业创新应用募集平台，向公众募集创新的解决方案，通过开放脱敏数据，以竞赛形式，评选优秀方案，促进产学研用的高效结合。</div>
+                    <div class="bbbox-content"><br>
+                        √ 竞赛发布<br>
+                        √ 竞赛查询<br>
+                        √ 竞赛生命周期管理<br>
+                        √ 竞赛结果查询<br>
+                    </div>
+                    <div class="bbbox-click">立即查看</div>
+                    <div class="bbbox-button">点击查看</div>
+                </div>
+            </div>
+            <div class="bbox">
+                <div class="bbbox">
+                    <div class="bbbox-title1">企业运营与监测优化</div>
+                    <div class="bbbox-title2">云化的设备管理、生产管理系统和物流管理系统，实现设备、物流和生产的监测、优化、诊断，降低企业使用系统的成本。</div>
+                    <div class="bbbox-content"><br>
+                        √ 工业互联网发展可视化前端UI<br>
+                        √ 设备管理微服务<br>
+                        √ 成熟度评估微服务<br>
+                        √ 生产、物流管理<br>
+                    </div>
+                    <div class="bbbox-click">立即查看</div>
+                    <div class="bbbox-button">点击查看</div>
+                </div>
+                <div class="bbbox">
+                    <div class="bbbox-title1">安全威胁感知</div>
+                    <div class="bbbox-title2">打破数据孤立特性,把数据融合成一个整体,从整体上进行全局的关联分析,并可以对数据整体进行高性能的处理,以及以互动的形式对数据进行多维度的裁剪和可视化。</div>    
+                    <div class="bbbox-content"><br>
+                        √ 工业企业测探针<br>
+                        √ 安全检测模块<br>
+                        √ 网络流量态势感知<br>
+                        √ 平台安全监测<br>
+                    </div>
+                    <div class="bbbox-click">立即查看</div>
+                    <div class="bbbox-button">点击查看</div>
+                </div>
+            </div>
+            <div class="bbox">
+                <div class="bbbox">
+                    <div class="bbbox-title1">中小微企业公共服务</div>
+                    <div class="bbbox-title2">中小微企业提供涉及工业设计、研发、生产、服务各环节的工业APP与APP集市。</div>     
+                    <div class="bbbox-content"><br>
+                        √ 工业APP集市<br>
+                        √ 解决方案市场<br>
+                        √ 供需对接市场<br>
+                        √ 工业产品服务<br>
+                    </div>
+                    <div class="bbbox-click">立即查看</div>
+                    <div class="bbbox-button">点击查看</div>
+                </div>
+                <div class="bbbox">
+                    <div class="bbbox-title1">分析预警</div>
+                    <div class="bbbox-title2">检测并扩建威胁列表, 对网络异常行为、已知攻击手段等多种类型的网络安全威胁数据进行统计建模与评估，将最终结果通过信息手段通报给相关人员。</div>    
+                    <div class="bbbox-content"><br>
+                        √ 数据管理模块<br>
+                        √ 安全威胁感知分析模块<br>
+                        √ 预警管理<br>
+                        √ 风险通报中心<br>
+                    </div>
+                    <div class="bbbox-click">立即查看</div>
+                    <div class="bbbox-button">点击查看</div>
+                </div>
+            </div>
+        </div>        
+    </div>
+    <div class="foot">
+        <div class="foot-title">
+            <div class="foot-title1">关于我们</div>
+            <div class="foot-title1">法律声明及隐私政策</div>
+            <div class="foot-title1">联系我们</div>  
+            <div class="foot-title2">国务院<br>工业和信息化部&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;科学与技术部<br>中国工业互联网研究院&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中国信息通信研究院&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;国家工业信息安全发展研究中心&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中国电子技术标准化研究院&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中国电子产品可靠性与环境试验研究院&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中国电子学会<br></div>  
+            <div class="foot-title3">京ICP备19044799号-3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中国工业互联网研究院版权所有</div>       
+        </div>
+    </div>
+
+</body>
+</html>
