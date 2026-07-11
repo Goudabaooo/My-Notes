@@ -2837,4 +2837,171 @@ Kaggle_NLP
 
 基于大数据和消费者的数字化，行为分析
 
-#### 5.20
+#### 7.5
+
+一开始节点表现为：
+
+```
+电脑端 FLCLASH 不可用
+手机端 Shadowrocket 不可用
+Azure VM 显示正常
+sing-box 监听 443
+PowerShell 测 443 = True
+VPS curl Google / Cloudflare 正常
+```
+
+这说明问题不在：
+
+```
+Azure VM 是否运行
+公网 IP 是否变化
+443 端口是否开放
+Ubuntu 出站网络
+sing-box 是否启动
+```
+
+真正的核心错误是服务端日志里的：
+
+```
+TLS handshake: REALITY: processed invalid connection
+```
+
+这个错误说明：客户端确实连到了 VPS，但 **VLESS + Reality 握手失败**。
+
+------
+
+## 实际排查过程中的关键节点
+
+### 1. 服务端是正常监听的
+
+查到：
+
+```
+*:443 users:(("sing-box",pid=705,fd=7))
+```
+
+说明 sing-box 正在占用 443，Hiddify/Docker 没有抢占端口。
+
+------
+
+### 2. 手机端一开始类型选错了
+
+开始在 Shadowrocket 里看到的是：
+
+```
+地址、端口、密码、算法、混淆、插件……
+```
+
+这其实是 **Shadowsocks** 的配置界面，不是 VLESS。后来切到 VLESS 后，才进入正确方向。
+
+------
+
+### 3. SNI 一开始没有填
+
+服务端原来是：
+
+```
+"server_name": "www.microsoft.com"
+```
+
+但手机端 TLS 页面里的 SNI 是空的。
+ 这会直接导致 Reality 握手失败。
+
+后来填了 SNI 后，错误形式发生变化，说明这个方向是对的。
+
+------
+
+### 4. short_id 和 keypair 一度不同步
+
+以为 short_id 已经更新成：
+
+```
+69d479677167df6b
+```
+
+但 VPS 当前实际配置里还是：
+
+```
+4b00411b73d1d4de
+```
+
+这说明当时存在“客户端以为自己用的是新参数，但服务端实际仍在用旧参数”的问题。
+
+Reality 里这些字段必须严格成套匹配：
+
+```
+服务端 private_key  ↔ 客户端 public_key
+服务端 short_id    ↔ 客户端 short_id
+服务端 server_name ↔ 客户端 SNI / servername
+服务端 flow        ↔ 客户端 XTLS / flow
+```
+
+任意一个不一致，都可能出现 `processed invalid connection`。
+
+------
+
+### 5. 最关键的定位方法：VPS 本机 sing-box 客户端测试
+
+最后没有继续猜 Shadowrocket 或 FLCLASH，而是在 VPS 本机创建了一个 `sb-client-test.json`，用：
+
+```
+curl -x socks5h://127.0.0.1:10808 https://www.google.com -I
+```
+
+测试结果返回：
+
+```
+HTTP/2 200
+```
+
+这一步非常关键，因为它证明：
+
+```
+服务端 sing-box 没问题
+Reality keypair 没问题
+short_id 没问题
+SNI 没问题
+VLESS Reality 本身能通
+```
+
+所以最终问题就只剩下：**电脑和手机客户端没有完全同步到这套成功配置**。
+
+------
+
+## 最终修复点
+
+最终有效配置变成了：
+
+```
+SNI / servername：www.cloudflare.com
+flow / XTLS：xtls-rprx-vision
+Reality public key：与服务端 private_key 同一对
+short_id：与服务端一致
+UUID：与服务端一致
+端口：443
+传输：TCP / none
+```
+
+电脑端 FLCLASH 通过 YAML 更新成功，手机端 Shadowrocket 也同步了同一套参数后恢复。
+
+------
+
+## 这次踩坑点记录
+
+以后遇到类似问题可以按这个顺序判断：
+
+```
+1. Azure VM 是否 Running
+2. 公网 IP 是否变化
+3. Azure NSG 是否放行 443
+4. VPS 是否监听 443：sudo ss -tulnp | grep ':443'
+5. sing-box 是否 active：sudo systemctl status sing-box
+6. VPS 出站是否正常：curl -I https://www.google.com
+7. 看日志：sudo journalctl -u sing-box -f --no-pager
+8. 如果是 REALITY: processed invalid connection，优先查 SNI / PublicKey / short_id / flow
+9. 如果客户端一直不通，用 VPS 本机 sing-box 客户端测试
+10. 本机测试通了，再同步手机和电脑客户端参数
+```
+
+这次最有价值的经验是：**不要只靠客户端界面肉眼判断参数是否正确，要用一个可控的 sing-box 客户端配置做基准测试。**
+
